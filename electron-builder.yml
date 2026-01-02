@@ -1,5 +1,5 @@
-appId: 'cll'
-productName: 'Cursed Land Launcher'
+appId: 'el'
+productName: 'Eryndor RP Launcher'
 artifactName: '${productName}-setup-${version}.${ext}'
 
 copyright: 'Copyright © 2025 Skyyteq'

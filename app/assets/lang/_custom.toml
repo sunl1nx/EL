@@ -1,20 +1,20 @@
 # Custom Language File for Launcher Customizer
 
 [ejs.app]
-title = "Cursed Lands Launcher"
+title = "Eryndor RP Launcher"
 
 [ejs.landing]
-mediaGitHubURL = "https://github.com/FRErlingx/CLL"
-mediaTwitterURL = "#"
+mediaGitHubURL = "https://github.com/Sunl1nx/EL"
+mediaTwitterURL = "https://x.com/sunl1nx"
 mediaInstagramURL = "#"
-mediaYouTubeURL = "#"
-mediaDiscordURL = "https://discord.gg/YwhNEVQdae"
+mediaYouTubeURL = "https://www.youtube.com/@Sunl1nx"
+mediaDiscordURL = "https://discord.gg/56XCPQQpbW"
 
 [ejs.settings]
 sourceGithubLink = "https://github.com/dscalZi/HeliosLauncher"
-supportLink = "https://github.com/FRErlingx/CLL/issues"
+supportLink = "https://github.com/Sunl1nx/EL/issues"
 
 [ejs.welcome]
-welcomeHeader = "BIENVENUE SUR CURSED LAND'S"
-welcomeDescription = "ODans un monde où le surnaturel est présent quatre hommes sont à la tête de tout ça... les Monarques. Découvrez un monde imaginer de toutes pièces par nos équipes et créer votre propres histoires."
-welcomeDescCTA = "Vous etes a deux pas des terres de Cursed Land's"
+welcomeHeader = "BIENVENUE SUR ERYNDOR RP"
+welcomeDescription = "Perdu au cœur d'un labyrinthe, vous y avez été envoyé après vous être réveillé dans une cuve dans un laboratoire... Qui étiez vous avant ? Peut-être que vous l'apprendrez au cours de votre aventure."
+welcomeDescCTA = "Vous etes a deux pas des terres d'Eryndor RP"

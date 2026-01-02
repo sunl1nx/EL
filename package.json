@@ -1,13 +1,13 @@
 {
-  "name": "cll",
-  "version": "1.5.4",
-  "productName": "Cursed Lands Launcher",
-  "description": "Official Cursed Lands Launcher",
-  "author": "Daniel Scalzi (https://github.com/dscalzi/)",
+  "name": "el",
+  "version": "0.0.1",
+  "productName": "Eryndor RP Launcher",
+  "description": "Official Eryndor RP Launcher",
+  "author": "Daniel Scalzi (https://github.com/dscalzi/), Sunl1nx (https://github.com/Sunl1nx/)",
   "license": "UNLICENSED",
-  "homepage": "https://github.com/FRErlingx/CLL",
+  "homepage": "https://github.com/Sunl1nx/EL",
   "bugs": {
-    "url": "https://github.com/FRErlingx/CLL/issues"
+    "url": "https://github.com/Sunl1nx/EL/issues"
   },
   "private": true,
   "main": "index.js",
@@ -46,6 +46,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FRErlingx/CLL.git"
+    "url": "git+https://github.com/Sunl1nx/EL.git"
   }
 }
