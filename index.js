@@ -104,9 +104,29 @@ ipcMain.handle(SHELL_OPCODE.TRASH_ITEM, async (event, ...args) => {
     }
 })
 
-// Disable hardware acceleration.
-// https://electronjs.org/docs/tutorial/offscreen-rendering
-app.disableHardwareAcceleration()
+// YouTube requires hardware acceleration or SwiftShader
+// Comment out hardware acceleration disable for YouTube support
+// app.disableHardwareAcceleration()
+
+// Enable SwiftShader for software rendering fallback
+app.commandLine.appendSwitch('enable-unsafe-swiftshader')
+app.commandLine.appendSwitch('ignore-gpu-blacklist')
+app.commandLine.appendSwitch('enable-features', 'VaapiVideoDecoder')
+
+// Suppress Chrome DevTools Autofill warnings
+app.commandLine.appendSwitch('disable-features', 'AutofillServerCommunication')
+
+// Filter out DevTools protocol errors
+const originalConsoleError = console.error
+console.error = (...args) => {
+    const errorString = args.join(' ')
+    // Suppress Autofill DevTools protocol errors
+    if (errorString.includes('Autofill.enable') || 
+        errorString.includes('Autofill.setAddresses')) {
+        return
+    }
+    originalConsoleError.apply(console, args)
+}
 
 
 const REDIRECT_URI_PREFIX = 'https://login.microsoftonline.com/common/oauth2/nativeclient?'
@@ -231,10 +251,13 @@ function createWindow() {
         height: 552,
         icon: getPlatformIcon('SealCircle'),
         frame: false,
+        fullscreenable: false,
         webPreferences: {
             preload: path.join(__dirname, 'app', 'assets', 'js', 'preloader.js'),
             nodeIntegration: true,
-            contextIsolation: false
+            contextIsolation: false,
+            webSecurity: false,
+            allowRunningInsecureContent: true
         },
         backgroundColor: '#171614'
     })
@@ -255,6 +278,19 @@ function createWindow() {
     win.removeMenu()
 
     win.resizable = true
+    
+    // Bloquer les demandes de fullscreen
+    win.on('enter-full-screen', () => {
+        win.setFullScreen(false)
+    })
+    
+    // Bloquer aussi via l'API F11 et les raccourcis
+    win.webContents.on('before-input-event', (event, input) => {
+        if (input.key.toLowerCase() === 'f11' || 
+            (input.control && input.shift && input.key.toLowerCase() === 'f')) {
+            event.preventDefault()
+        }
+    })
 
     win.on('closed', () => {
         win = null

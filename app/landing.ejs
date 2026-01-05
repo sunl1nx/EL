@@ -1,34 +1,113 @@
 <div id="landingContainer" style="display: none;">
-    <div id="upper">
-        <div id="left">
-            <div id="image_seal_container">
-                <img id="image_seal" src="assets/images/SealCircle.png"/>
-                <div id="updateAvailableTooltip"><%- lang('landing.updateAvailableTooltip') %></div>
+    <!-- Top Navigation Bar -->
+    <div id="topNavBar">
+        <div id="breadcrumb">
+            <span class="breadcrumb-item">Home</span>
+            <span class="breadcrumb-separator">></span>
+            <span class="breadcrumb-item active">Eryndor : Jardin d'Émeraude</span>
+        </div>
+        <div id="topNavRight">
+            <div id="user_content">
+                <div id="avatarContainer">
+                    <button id="avatarOverlay"><%- lang('landing.usernameEditButton') %></button>
+                </div>
+                <span id="user_text"><%- lang('landing.usernamePlaceholder') %></span>
+            </div>
+            <div id="topNavIcons">
+                <button class="topNavIcon" id="shopButton" title="Boutique">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path fill="currentColor" d="M6 7l1-3h10l1 3h2v2h-1l-1.2 10.4A2 2 0 0115.8 21H8.2a2 2 0 01-1.98-1.6L5 9H4V7h2zm2.2 12h7.6a.5.5 0 00.49-.4L17.4 9H6.6l1 9.6a.5.5 0 00.6.4zM10 11h2v6h-2v-6zm4 0h2v6h-2v-6zM8 11h2v6H8v-6zm.35-6l-.33 1h7.96l-.33-1H8.35z"/>
+                    </svg>
+                </button>
+                <button class="topNavIcon" id="settingsMediaButton" title="Settings">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path fill="currentColor" d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+                    </svg>
+                </button>
             </div>
         </div>
-        <div id="content">
-        </div>
-        <div id="right">
-            <div id="rightContainer">
-                <div id="user_content">
-                    <span id="user_text"><%- lang('landing.usernamePlaceholder') %></span>
-                    <div id="avatarContainer">
-                        <button id="avatarOverlay"><%- lang('landing.usernameEditButton') %></button>
+    </div>
+
+    <!-- Main scrollable content wrapper -->
+    <div id="mainScrollContent">
+        <!-- Main Content Area -->
+        <div id="mainContentArea">
+            <!-- Left Panel: Server Info -->
+            <div id="serverPanel">
+                <div id="serverLogo">
+                    <img src="assets/images/SealCircle.png" alt="Server Logo"/>
+                </div>
+                <h1 id="serverTitle">Eryndor : Jardin d'Émeraude</h1>
+                <p id="serverDescription">Plongez dans un monde médiéval fantastique où magie et aventure se rencontrent dans des jardins d'émeraude enchantés.</p>
+                
+                <div id="serverBadges">
+                    <span class="badge">Alpha</span>
+                    <span class="badge">RP</span>
+                </div>
+                
+                <button id="launch_button">
+                    Play
+                </button>
+                
+                <button id="optionsButton" title="Options">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path fill="currentColor" d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Right Panel: Video/Media -->
+            <div id="mediaPanel">
+                <div id="videoContainer">
+                    <img 
+                        id="trailerThumbnail" 
+                        src="https://img.youtube.com/vi/bd6mPrWp4U8/maxresdefault.jpg" 
+                        alt="Cinematic Trailer"
+                    />
+                    <div id="videoOverlay">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="white" style="opacity: 0.9; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
                     </div>
                 </div>
-                <div id="mediaContent">
-                    <div id="internalMedia">
-                        <div class="mediaContainer" id="settingsMediaContainer">
-                            <button class="mediaButton" id="settingsMediaButton">
-                                <svg id="settingsSVG" class="mediaSVG" viewBox="0 0 141.36 137.43">
-                                    <path d="M70.70475616319865,83.36934004916053 a15.320781354859122,15.320781354859122 0 1 1 14.454501310561755,-15.296030496450625 A14.850515045097694,14.850515045097694 0 0 1 70.70475616319865,83.36934004916053 M123.25082856443602,55.425620905968366 h-12.375429204248078 A45.54157947163293,45.54157947163293 0 0 0 107.21227231573047,46.243052436416285 l8.613298726156664,-9.108315894326587 a9.727087354538993,9.727087354538993 0 0 0 0,-13.167456673319956 l-3.465120177189462,-3.6631270444574313 a8.489544434114185,8.489544434114185 0 0 0 -12.375429204248078,0 l-8.613298726156664,9.108315894326587 A40.442902639482725,40.442902639482725 0 0 0 81.99114759747292,25.427580514871032 V12.532383284044531 a9.108315894326587,9.108315894326587 0 0 0 -8.811305593424633,-9.306322761594556 h-4.950171681699231 a9.108315894326587,9.108315894326587 0 0 0 -8.811305593424633,9.306322761594556 v12.895197230826497 a40.17064319698927,40.17064319698927 0 0 0 -9.331073620003052,4.0591407789933704 l-8.613298726156664,-9.108315894326587 a8.489544434114185,8.489544434114185 0 0 0 -12.375429204248078,0 L25.58394128451018,23.967279868769744 a9.727087354538993,9.727087354538993 0 0 0 0,13.167456673319956 L34.19724001066683,46.243052436416285 a45.07131316187151,45.07131316187151 0 0 0 -3.6631270444574313,9.083565035918088 h-12.375429204248078 a9.083565035918088,9.083565035918088 0 0 0 -8.811305593424633,9.306322761594556 v5.197680265784193 a9.108315894326587,9.108315894326587 0 0 0 8.811305593424633,9.306322761594556 h11.979415469712139 a45.69008462208391,45.69008462208391 0 0 0 4.0591407789933704,10.642869115653347 l-8.613298726156664,9.108315894326587 a9.727087354538993,9.727087354538993 0 0 0 0,13.167456673319956 l3.465120177189462,3.6631270444574313 a8.489544434114185,8.489544434114185 0 0 0 12.375429204248078,0 l8.613298726156664,-9.108315894326587 a40.49240435629971,40.49240435629971 0 0 0 9.331073620003052,4.0591407789933704 v12.895197230826497 a9.083565035918088,9.083565035918088 0 0 0 8.811305593424633,9.306322761594556 h4.950171681699231 A9.083565035918088,9.083565035918088 0 0 0 81.99114759747292,123.68848839660077 V110.79329116577425 a40.78941465720167,40.78941465720167 0 0 0 9.331073620003052,-4.0591407789933704 l8.613298726156664,9.108315894326587 a8.489544434114185,8.489544434114185 0 0 0 12.375429204248078,0 l3.465120177189462,-3.6631270444574313 a9.727087354538993,9.727087354538993 0 0 0 0,-13.167456673319956 l-8.613298726156664,-9.108315894326587 a45.665333763675406,45.665333763675406 0 0 0 4.034389920584874,-10.642869115653347 h12.004166328120636 a9.108315894326587,9.108315894326587 0 0 0 8.811305593424633,-9.306322761594556 v-5.197680265784193 a9.083565035918088,9.083565035918088 0 0 0 -8.811305593424633,-9.306322761594556 " id="svg_3" class=""/>
-                                </svg>
+            </div>
+        </div>
+
+        <!-- News Cards Section -->
+        <div id="newsCardsSection">
+            <!-- Les cartes seront générées dynamiquement via RSS -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="landingFooter">
+        <svg width="20" height="20" viewBox="0 0 24 24" style="margin-right: 8px;">
+            <path fill="currentColor" d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 2.18l8 3.64v8.2c0 4.54-3.07 8.78-7.5 9.94-.48.13-.96.24-1.5.24s-1.02-.11-1.5-.24C5.57 24.8 2.5 20.56 2.5 16.02v-8.2l8-3.64zM10 14l-3-3 1.41-1.41L10 11.17l5.59-5.58L17 7l-7 7z"/>
+        </svg>
+        <span>Eryndor • Not affiliated with Mojang Studios</span>
+    </div>
+
+    <!-- Hidden original content for functionality -->
+    <div id="hiddenOriginalContent" style="display: none;">
+        <div id="upper">
+            <div id="left">
+                <div id="image_seal_container">
+                    <img id="image_seal" src="assets/images/SealCircle.png"/>
+                    <div id="updateAvailableTooltip"><%- lang('landing.updateAvailableTooltip') %></div>
+                </div>
+            </div>
+            <div id="content">
+            </div>
+            <div id="right">
+                <div id="rightContainer">
+                    <div id="mediaContent">
+                        <div id="internalMedia">
+                            <div class="mediaContainer" id="settingsMediaContainer">
                                 <div id="settingsTooltip"><%- lang('landing.settingsTooltip') %></div>
-                            </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mediaDivider"></div>
-                    <div id="externalMedia">
+                        <div class="mediaDivider"></div>
+                        <div id="externalMedia">
                         <div class="mediaContainer">
                             <a href="<%- lang('landing.mediaGitHubURL') %>" class="mediaURL" id="linkURL">
                                 <svg id="linkSVG" class="mediaSVG" viewBox="35.34 34.3575 70.68 68.71500">
@@ -141,7 +220,7 @@
         <div id="right">
             <div class="bot_wrapper">
                 <div id="launch_content">
-                    <button id="launch_button"><%- lang('landing.launchButton') %></button>
+                    <button id="launch_button_old"><%- lang('landing.launchButton') %></button>
                     <div class="bot_divider"></div>
                     <button id="server_selection_button" class="bot_label"><%- lang('landing.launchButtonPlaceholder') %></button>
                 </div>
@@ -159,6 +238,11 @@
         </div>
     </div>
     <div id="newsContainer">
+newsContainer">
+        <button id="newsBackButton" type="button">
+            <span class="backIcon">&#8592;</span>
+            <span class="backText">Back</span>
+        </button>
         <div id="newsContent" article="-1" style="display: none;">
             <div id="newsStatusContainer">
                 <div id="newsStatusContent">
