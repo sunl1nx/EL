@@ -2,7 +2,7 @@ appId: 'el'
 productName: 'Eryndor RP Launcher'
 artifactName: '${productName}-setup-${version}.${ext}'
 
-copyright: 'Copyright © 2025 Skyyteq'
+copyright: 'Copyright © 2025 Sunl1nx'
 
 asar: true
 compression: 'maximum'
