@@ -127,24 +127,6 @@ document.getElementById('launch_button').addEventListener('click', async e => {
     }
 })
 
-// Bind trailer thumbnail click to open YouTube in browser
-document.addEventListener('DOMContentLoaded', () => {
-    const trailerThumbnail = document.getElementById('trailerThumbnail')
-    if(trailerThumbnail) {
-        trailerThumbnail.addEventListener('click', () => {
-            require('electron').shell.openExternal('https://www.youtube.com/watch?v=bd6mPrWp4U8')
-        })
-        trailerThumbnail.parentElement.style.cursor = 'pointer'
-    }
-
-    const shopButton = document.getElementById('shopButton')
-    if(shopButton) {
-        shopButton.addEventListener('click', () => {
-            require('electron').shell.openExternal('https://eryndor.wstr.fr/shop')
-        })
-    }
-})
-
 // Bind settings button
 document.getElementById('settingsMediaButton').onclick = async e => {
     await prepareSettings()
@@ -1042,84 +1024,3 @@ async function loadNews(){
 
     return await promise
 }
-
-/**
- * Populate news cards in the modern landing page layout
- */
-async function populateNewsCards() {
-    const newsCardsSection = document.getElementById('newsCardsSection')
-    if (!newsCardsSection) return
-
-    const news = await loadNews()
-    const articles = news?.articles || []
-
-    if (articles.length === 0) {
-        newsCardsSection.innerHTML = '<p style="color: rgba(255,255,255,0.5); text-align: center; width: 100%; padding: 40px;">No news articles available</p>'
-        return
-    }
-
-    // Clear existing cards
-    newsCardsSection.innerHTML = ''
-
-    // Create news cards from RSS feed
-    articles.forEach((article, index) => {
-        const card = document.createElement('div')
-        card.className = 'newsCard'
-        if (index === 0) card.classList.add('active')
-
-        // Extract first image from content for thumbnail (no fallback to placeholder)
-        const imgRegex = /<img[^>]+src="([^">]+)"/
-        const imgMatch = article.content.match(imgRegex)
-        const thumbnail = imgMatch ? imgMatch[1] : null
-
-        // Strip HTML tags for description
-        const tempDiv = document.createElement('div')
-        tempDiv.innerHTML = article.content
-        const description = tempDiv.textContent.trim().substring(0, 150) + '...'
-
-        // Build card content without inline handlers (CSP-safe)
-        const content = document.createElement('div')
-        content.className = 'newsCardContent'
-        content.innerHTML = `
-            <div class="newsCardDate">${article.date}</div>
-            <h3 class="newsCardTitle">${article.title}</h3>
-            <p class="newsCardCategory">News</p>
-            ${index === 0 ? `<p class="newsCardDescription">${description}</p>` : ''}
-        `
-
-        if (thumbnail) {
-            const imgEl = document.createElement('img')
-            imgEl.src = thumbnail
-            imgEl.alt = article.title
-            imgEl.className = 'newsCardImage'
-            imgEl.addEventListener('error', () => {
-                imgEl.style.display = 'none'
-            })
-            card.appendChild(imgEl)
-        }
-
-        card.appendChild(content)
-
-        // Click handler to open full article
-        card.addEventListener('click', () => {
-            // Remove active class from all cards
-            document.querySelectorAll('.newsCard').forEach(c => c.classList.remove('active'))
-            card.classList.add('active')
-            
-            // Toggle description
-            const desc = card.querySelector('.newsCardDescription')
-            if (desc) {
-                desc.style.display = desc.style.display === 'block' ? 'none' : 'block'
-            } else {
-                const newDesc = document.createElement('p')
-                newDesc.className = 'newsCardDescription'
-                newDesc.textContent = description
-                newDesc.style.display = 'block'
-                card.querySelector('.newsCardContent').appendChild(newDesc)
-            }
-        })
-
-        newsCardsSection.appendChild(card)
-    })
-}
-

@@ -208,11 +208,6 @@ loginButton.addEventListener('click', () => {
                 loginLoading(false)
                 loginButton.innerHTML = loginButton.innerHTML.replace(Lang.queryJS('login.success'), Lang.queryJS('login.login'))
                 formDisabled(false)
-            }, () => {
-                // Populate news cards when arriving at landing page after login
-                if(loginViewOnSuccess === VIEWS.landing && typeof populateNewsCards === 'function') {
-                    populateNewsCards()
-                }
             })
         }, 1000)
     }).catch((displayableError) => {

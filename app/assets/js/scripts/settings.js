@@ -332,12 +332,7 @@ function fullSettingsSave() {
 /* Closes the settings view and saves all data. */
 settingsNavDone.onclick = () => {
     fullSettingsSave()
-    switchView(getCurrentView(), VIEWS.landing, 500, 500, () => {}, () => {
-        // Populate news cards from RSS feed when returning to landing page
-        if(typeof populateNewsCards === 'function') {
-            populateNewsCards()
-        }
-    })
+    switchView(getCurrentView(), VIEWS.landing)
 }
 
 /**
@@ -423,11 +418,6 @@ ipcRenderer.on(MSFT_OPCODE.REPLY_LOGIN, (_, ...arguments_) => {
                 updateSelectedAccount(value)
                 switchView(getCurrentView(), viewOnClose, 500, 500, async () => {
                     await prepareSettings()
-                }, () => {
-                    // Populate news cards when arriving at landing page after Microsoft login
-                    if(viewOnClose === VIEWS.landing && typeof populateNewsCards === 'function') {
-                        populateNewsCards()
-                    }
                 })
             })
                 .catch((displayableError) => {
